@@ -1,0 +1,47 @@
+<nav class="navbar mt-0 mb-0">
+    <div class="navbar-logo">
+        <img src="../../assets/9e3923825ba4a4fa967858f980b8460f.png" style="width: 120px;
+        height: 80px;" alt="Logo">
+    </div>
+</nav>
+<div class="fuente surface-section px-3 py-3 md:px-3 lg:px-3">
+    <div class="text-700 text-center">
+        <div class="text-blue-600 font-bold mb-3"><i class="pi pi-discord"></i>&nbsp;Unete a nuestra Comunidad</div>
+        <div class="text-900 font-bold text-5xl mb-3" id="maquina-de-escribir"></div>
+        <div class="text-700 text-2xl mb-5">Haz realidades tu sueños.</div>
+        <button pButton pRipple label="Unete ahora" icon="pi pi-discord"
+            class="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap"
+            (click)="backAgain()"></button>
+    </div>
+</div>
+
+<div *ngIf="paginatedPokemons.length > 0">
+    <h1 class="titulo">Lista de Pokemones</h1>
+    <div class="pokemon-cards">
+        <div *ngFor="let pokemon of paginatedPokemons" class="pokemon-card p-card">
+            <div class="pokemon-card-front p-card-title">
+                <div class="pokemon-img">
+                    <img [src]="pokemon.details?.sprites?.front_default" alt="Pokemon Image">
+                </div>
+                <h3 class="pokemon-name">{{ pokemon.name }}</h3>
+                <p><strong>Tipo:</strong> {{ getTypes(pokemon.details?.types) }}</p>
+            </div>
+            <div class="pokemon-card-back p-card-content">
+                <p><strong>Altura:</strong> {{ pokemon.details?.height }}</p>
+                <p><strong>Peso:</strong> {{ pokemon.details?.weight }}</p>
+                <p><strong>Habilidades:</strong> {{ getAbilities(pokemon.details?.abilities) }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card flex justify-content-center">
+    <p-paginator [rows]="itemsPerPage" [totalRecords]="pokemons.length" [rowsPerPageOptions]="[10, 20, 50]"
+        (onPageChange)="onPageChange($event)"></p-paginator>
+</div>
+
+<footer class="footer">
+    <div class="text-center">
+        <p>Todos los derechos reservados <strong>Fernando Lucas Huerta</strong> &copy; {{ currentYear }}</p>
+    </div>
+</footer>

@@ -21,7 +21,7 @@
         <div *ngFor="let pokemon of paginatedPokemons" class="pokemon-card p-card">
             <div class="pokemon-card-front p-card-title">
                 <div class="pokemon-img">
-                    <img [src]="pokemon.details?.sprites?.front_default" alt="Pokemon Image">
+                    <img [src]="pokemon.details?.sprites?.front_shiny" alt="Pokemon Image">
                 </div>
                 <h3 class="pokemon-name">{{ pokemon.name }}</h3>
                 <p><strong>Tipo:</strong> {{ getTypes(pokemon.details?.types) }}</p>
@@ -30,13 +30,14 @@
                 <p><strong>Altura:</strong> {{ pokemon.details?.height }}</p>
                 <p><strong>Peso:</strong> {{ pokemon.details?.weight }}</p>
                 <p><strong>Habilidades:</strong> {{ getAbilities(pokemon.details?.abilities) }}</p>
+                <p><strong>Base de experiencia:</strong> {{ pokemon.details?.base_experience }}</p>
             </div>
         </div>
     </div>
 </div>
 
 <div class="card flex justify-content-center">
-    <p-paginator [rows]="itemsPerPage" [totalRecords]="pokemons.length" [rowsPerPageOptions]="[10, 20, 50]"
+    <p-paginator [rows]="itemsPerPage" [totalRecords]="pokemons.length" [rowsPerPageOptions]="[7, 14, 21, 28]"
         (onPageChange)="onPageChange($event)"></p-paginator>
 </div>
 

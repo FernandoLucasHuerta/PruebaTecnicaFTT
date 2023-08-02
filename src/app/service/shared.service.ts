@@ -28,7 +28,7 @@ export class SharedService {
   obtenerPokemones(): Observable<any> {
     const request: CustomRequest = {
       method: 'GET',
-      url: `${this.API_KEY}?limit=30`, // Limitamos a 30
+      url: `${this.API_KEY}?limit=150`, // Limitamos a 30
     };
     return this.generalRequest(request);
   }
